@@ -1,5 +1,5 @@
-LLVM_VERSION=3.4.2
-LLVM_TAR=llvm-$LLVM_VERSION.src.tar.gz
+LLVM_VERSION=3.5.2
+LLVM_TAR=llvm-$LLVM_VERSION.src.tar.xz
 LLVM_URL=http://releases.llvm.org/$LLVM_VERSION/$LLVM_TAR
 
 if [ $TRAVIS_OS_NAME == "osx" ]; then

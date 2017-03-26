@@ -14,15 +14,11 @@ cmake .. \
 	-DLLVM_ENABLE_ZLIB=OFF \
 	-DLLVM_INCLUDE_DOCS=OFF \
 	-DLLVM_INCLUDE_EXAMPLES=OFF \
-	-DLLVM_INCLUDE_TESTS=OFF
+	-DLLVM_INCLUDE_TESTS=OFF \
+	-DLLVM_INCLUDE_TOOLS=OFF \
+	-DLLVM_INCLUDE_UTILS=OFF
 
 make
 make install
 
 popd
-
-perl patch-llvm-config.pl $THIS_DIR/$LLVM_RELEASE_DIR/share/llvm/cmake/LLVMConfig.cmake
-
-echo patched LLVMConfig.cmake:
-cat $THIS_DIR/$LLVM_RELEASE_DIR/share/llvm/cmake/LLVMConfig.cmake
-
