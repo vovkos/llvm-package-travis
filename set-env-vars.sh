@@ -1,4 +1,4 @@
-LLVM_VERSION=3.8.1
+LLVM_VERSION=3.9.1
 LLVM_TAR=llvm-$LLVM_VERSION.src.tar.xz
 LLVM_URL=http://releases.llvm.org/$LLVM_VERSION/$LLVM_TAR
 

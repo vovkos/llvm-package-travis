@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# manually install CMake -- we need at least CMake 3.3
+# manually install CMake -- we need at least CMake 3.4.3
 
-CMAKE_VERSION=3.3.2
-CMAKE_VERSION_DIR=v3.3
+CMAKE_VERSION=3.4.3
+CMAKE_VERSION_DIR=v3.4
 CMAKE_OS=Linux-x86_64
 CMAKE_TAR=cmake-$CMAKE_VERSION-$CMAKE_OS.tar.gz
 CMAKE_URL=http://www.cmake.org/files/$CMAKE_VERSION_DIR/$CMAKE_TAR
