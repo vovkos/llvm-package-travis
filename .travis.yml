@@ -34,7 +34,7 @@ before_install:
 script:
     - source build.sh
 
-    - tar -cvJf $LLVM_RELEASE_FILE $LLVM_RELEASE_DIR
+    - tar -cv${TAR_COMPRESSION}f $LLVM_RELEASE_FILE $LLVM_RELEASE_DIR
 
 deploy:
     provider:     releases

@@ -18,3 +18,5 @@ Releases
 * `LLVM 3.5.2 <https://github.com/vovkos/llvm-package/releases/llvm-3.5.2>`_
 * `LLVM 3.6.2 <https://github.com/vovkos/llvm-package/releases/llvm-3.6.2>`_
 * `LLVM 3.7.1 <https://github.com/vovkos/llvm-package/releases/llvm-3.7.1>`_
+* `LLVM 3.8.1 <https://github.com/vovkos/llvm-package/releases/llvm-3.8.1>`_
+* `LLVM 3.9.1 <https://github.com/vovkos/llvm-package/releases/llvm-3.9.1>`_
