@@ -1,8 +1,8 @@
 LLVM packages for Travis CI
 ===========================
 
-.. image:: https://travis-ci.org/vovkos/llvm-package.svg?branch=master
-	:target: https://travis-ci.org/vovkos/llvm-package
+.. image:: https://travis-ci.org/vovkos/llvm-travis-package.svg?branch=llvm-3.4.x
+	:target: https://travis-ci.org/vovkos/llvm-travis-package
 
 Abstract
 --------
