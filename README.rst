@@ -1,8 +1,8 @@
 LLVM packages for Travis CI
 ===========================
 
-.. image:: https://travis-ci.org/vovkos/llvm-package.svg?branch=master
-	:target: https://travis-ci.org/vovkos/llvm-package
+.. image:: https://travis-ci.org/vovkos/llvm-travis-package.svg?branch=llvm-3.8.x
+	:target: https://travis-ci.org/vovkos/llvm-travis-package
 
 Abstract
 --------
@@ -19,4 +19,3 @@ Releases
 * `LLVM 3.6.2 <https://github.com/vovkos/llvm-package/releases/llvm-3.6.2>`_
 * `LLVM 3.7.1 <https://github.com/vovkos/llvm-package/releases/llvm-3.7.1>`_
 * `LLVM 3.8.1 <https://github.com/vovkos/llvm-package/releases/llvm-3.8.1>`_
-* `LLVM 3.9.1 <https://github.com/vovkos/llvm-package/releases/llvm-3.9.1>`_
