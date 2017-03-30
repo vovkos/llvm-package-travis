@@ -25,16 +25,17 @@ matrix:
 
 before_install:
     - source set-env-vars.sh
-    - source install-$TRAVIS_OS_NAME.sh
-
-    - wget --quiet $LLVM_URL
-    - mkdir -p llvm
-    - tar --strip-components=1 -xf $LLVM_TAR -C llvm
+    - source install.sh
 
 script:
-    - source build.sh
+    - mkdir llvm/build
+    - pushd llvm/build
+    - cmake .. $CMAKE_FLAGS
+    - make
+    - make install
+    - popd
 
-    - tar -cvJf $LLVM_RELEASE_FILE $LLVM_RELEASE_DIR
+    - tar -cvJf $LLVM_RELEASE_FILE $LLVM_RELEASE_NAME
 
 deploy:
     provider:     releases
