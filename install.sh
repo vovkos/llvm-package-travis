@@ -1,5 +1,23 @@
 #!/bin/bash
 
+#. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+# download and unpack LLVM sources
+
+wget --quiet $LLVM_URL
+mkdir -p llvm
+tar --strip-components=1 -xf $LLVM_TAR -C llvm
+
+#. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+# if it's not the prehistoric ubuntu, we are done with install
+
+if [ $TRAVIS_OS_NAME != "linux" ]; then
+	exit 0
+fi
+
+#. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
 # manually install CMake -- we need at least CMake 3.4.3
 
 CMAKE_VERSION=3.4.3
@@ -13,6 +31,8 @@ wget --quiet $CMAKE_URL
 mkdir -p $CMAKE_DIR
 tar --strip-components=1 -xzf $CMAKE_TAR -C $CMAKE_DIR
 export PATH=$CMAKE_DIR/bin:$PATH
+
+#. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
 # now to official APT packages
 
