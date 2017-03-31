@@ -2,18 +2,12 @@ LLVM_VERSION=3.9.1
 LLVM_TAR=llvm-$LLVM_VERSION.src.tar.xz
 LLVM_URL=http://releases.llvm.org/$LLVM_VERSION/$LLVM_TAR
 
-CC_SUFFIX=$CC
-
 if [ $TRAVIS_OS_NAME == "osx" ]; then
 	CPU_SUFFIX=
-
-   	# the default gcc on osx is just a front-end for LLVM
-    if [ $CC == "gcc" ]; then
-        CXX=g++-4.8
-        CC=gcc-4.8
-    fi
+	CC_SUFFIX=
 else
 	CPU_SUFFIX=-$TARGET_CPU
+	CC_SUFFIX=-$CC
 fi
 
 if [ $TARGET_CPU == "x86" ]; then
@@ -35,7 +29,7 @@ else
 fi
 
 THIS_DIR=`pwd`
-LLVM_RELEASE_NAME=llvm-$LLVM_VERSION-$TRAVIS_OS_NAME$CPU_SUFFIX-$CC_SUFFIX$DEBUG_SUFFIX
+LLVM_RELEASE_NAME=llvm-$LLVM_VERSION-$TRAVIS_OS_NAME$CPU_SUFFIX$CC_SUFFIX$DEBUG_SUFFIX
 LLVM_RELEASE_DIR=$THIS_DIR/$LLVM_RELEASE_NAME
 LLVM_RELEASE_FILE=$LLVM_RELEASE_NAME.tar$TAR_FILE_EXT
 

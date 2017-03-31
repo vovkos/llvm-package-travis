@@ -18,7 +18,7 @@ Even worse, building LLVM on Travis CI as part of your project is no longer an o
 	- Mac OS X 10.11.6
 
 * Compiler:
-	- gcc++ 4.8.4
+	- gcc++ 4.8.4 (Linux only)
 	- clang++ 3.5.0
 
 * Configuration:
@@ -26,7 +26,7 @@ Even worse, building LLVM on Travis CI as part of your project is no longer an o
 	- Release
 
 * Target CPU:
-	- IA32 (a.k.a. x86)
+	- IA32 (a.k.a. x86; Linux only)
 	- AMD64 (a.k.a. x86_64)
 
 The resulting LLVM binary packages are made publicly available as GitHub release artifacts. Other projects can then download LLVM package archives and unpack LLVM binaries, instead of building LLVM locally.
