@@ -13,7 +13,7 @@ tar --strip-components=1 -xf $LLVM_TAR -C llvm
 # if it's not the prehistoric ubuntu, we are done with install
 
 if [ $TRAVIS_OS_NAME != "linux" ]; then
-	exit 0
+	return
 fi
 
 #. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .

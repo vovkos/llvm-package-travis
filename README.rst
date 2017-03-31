@@ -29,7 +29,7 @@ Even worse, building LLVM on Travis CI as part of your project is no longer an o
 	- IA32 (a.k.a. x86)
 	- AMD64 (a.k.a. x86_64)
 
-The resulting LLVM binary packages are then made publicly available as GitHub release artifacts. Other projects can then download LLVM package archives and unpack LLVM binaries, instead of building LLVM locally.
+The resulting LLVM binary packages are made publicly available as GitHub release artifacts. Other projects can then download LLVM package archives and unpack LLVM binaries, instead of building LLVM locally.
 
 Releases
 --------
