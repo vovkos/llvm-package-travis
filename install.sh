@@ -4,9 +4,14 @@
 
 # download and unpack LLVM sources
 
-wget --quiet $LLVM_URL
+wget --quiet $LLVM_SRC_URL
 mkdir -p llvm
-tar --strip-components=1 -xf $LLVM_TAR -C llvm
+tar --strip-components=1 -xf $LLVM_SRC_TAR -C llvm
+
+# download and extract pre-built llvm-tblgen
+
+wget --quiet $LLVM_BIN_URL
+tar --strip-components=2 -xf $LLVM_BIN_TAR --no-anchored llvm-tblgen
 
 #. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
