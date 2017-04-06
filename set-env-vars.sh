@@ -1,16 +1,18 @@
 LLVM_VERSION=4.0.0
 LLVM_SRC_TAR=llvm-$LLVM_VERSION.src.tar.xz
 LLVM_SRC_URL=http://releases.llvm.org/$LLVM_VERSION/$LLVM_SRC_TAR
-LLVM_BIN_TAR=clang+llvm-$LLVM_VERSION-x86_64-linux-gnu-ubuntu-14.04.tar.xz
-LLVM_BIN_URL=http://releases.llvm.org/$LLVM_VERSION/$LLVM_BIN_TAR
 
 if [ $TRAVIS_OS_NAME == "osx" ]; then
 	CPU_SUFFIX=
 	CC_SUFFIX=
+	LLVM_BIN_TAR=clang+llvm-$LLVM_VERSION-x86_64-apple-darwin.tar.xz
 else
 	CPU_SUFFIX=-$TARGET_CPU
 	CC_SUFFIX=-$CC
+	LLVM_BIN_TAR=clang+llvm-$LLVM_VERSION-x86_64-linux-gnu-ubuntu-14.04.tar.xz
 fi
+
+LLVM_BIN_URL=http://releases.llvm.org/$LLVM_VERSION/$LLVM_BIN_TAR
 
 if [ $TARGET_CPU == "x86" ]; then
 	LLVM_BUILD_32_BITS=ON
