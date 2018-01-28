@@ -1,4 +1,4 @@
-LLVM_VERSION=4.0.0
+LLVM_VERSION=4.0.1
 LLVM_SRC_TAR=llvm-$LLVM_VERSION.src.tar.xz
 LLVM_SRC_URL=http://releases.llvm.org/$LLVM_VERSION/$LLVM_SRC_TAR
 
