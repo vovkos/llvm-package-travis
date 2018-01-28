@@ -1,19 +1,23 @@
+# apparently, the set of targets in a LLVM binary release is... kind of random.
+# so we might need to take llvm-tblgen from another release. hence, LLVM_BIN_VERSION
+
 LLVM_VERSION=4.0.1
+LLVM_BIN_VERSION=4.0.0
 LLVM_SRC_TAR=llvm-$LLVM_VERSION.src.tar.xz
 LLVM_SRC_URL=http://releases.llvm.org/$LLVM_VERSION/$LLVM_SRC_TAR
 
 if [ $TRAVIS_OS_NAME == "osx" ]; then
 	CPU_SUFFIX=
 	CC_SUFFIX=
-	LLVM_BIN_RELEASE_NAME=clang+llvm-$LLVM_VERSION-x86_64-apple-darwin
+	LLVM_BIN_RELEASE_NAME=clang+llvm-$LLVM_BIN_VERSION-x86_64-apple-darwin
 else
 	CPU_SUFFIX=-$TARGET_CPU
 	CC_SUFFIX=-$CC
-	LLVM_BIN_RELEASE_NAME=clang+llvm-$LLVM_VERSION-x86_64-linux-gnu-ubuntu-14.04
+	LLVM_BIN_RELEASE_NAME=clang+llvm-$LLVM_BIN_VERSION-x86_64-linux-gnu-ubuntu-14.04
 fi
 
 LLVM_BIN_TAR=$LLVM_BIN_RELEASE_NAME.tar.xz
-LLVM_BIN_URL=http://releases.llvm.org/$LLVM_VERSION/$LLVM_BIN_TAR
+LLVM_BIN_URL=http://releases.llvm.org/$LLVM_BIN_VERSION/$LLVM_BIN_TAR
 
 if [ $TARGET_CPU == "x86" ]; then
 	LLVM_BUILD_32_BITS=ON
