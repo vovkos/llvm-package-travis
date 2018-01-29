@@ -11,7 +11,7 @@ tar --strip-components=1 -xf $LLVM_SRC_TAR -C llvm
 # download and extract pre-built llvm-tblgen
 
 wget --quiet $LLVM_BIN_URL
-tar --strip-components=2 -xf $LLVM_BIN_TAR $LLVM_BIN_RELEASE_NAME/bin/llvm-tblgen
+tar --strip-components=2 -xf $LLVM_BIN_TAR $LLVM_BIN_TAR_SUBDIR/bin/llvm-tblgen
 
 #. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 

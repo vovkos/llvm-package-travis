@@ -7,16 +7,21 @@ LLVM_SRC_TAR=llvm-$LLVM_VERSION.src.tar.xz
 LLVM_SRC_URL=http://releases.llvm.org/$LLVM_VERSION/$LLVM_SRC_TAR
 
 if [ $TRAVIS_OS_NAME == "osx" ]; then
+	CPU_COUNT=$(sysctl -n hw.ncpu)
 	CPU_SUFFIX=
 	CC_SUFFIX=
-	LLVM_BIN_RELEASE_NAME=clang+llvm-$LLVM_BIN_VERSION-x86_64-apple-darwin
+	LLVM_BIN_TAR_SUBDIR=clang+llvm-$LLVM_BIN_VERSION-final-x86_64-apple-darwin
+	LLVM_BIN_TAR=clang+llvm-$LLVM_BIN_VERSION-x86_64-apple-darwin.tar.xz
 else
+	CPU_COUNT=$(nproc)
 	CPU_SUFFIX=-$TARGET_CPU
 	CC_SUFFIX=-$CC
-	LLVM_BIN_RELEASE_NAME=clang+llvm-$LLVM_BIN_VERSION-x86_64-linux-gnu-ubuntu-14.04
+	LLVM_BIN_TAR_SUBDIR=clang+llvm-$LLVM_BIN_VERSION-x86_64-linux-gnu-ubuntu-14.04
+	LLVM_BIN_TAR=$LLVM_BIN_TAR_SUBDIR.tar.xz
 fi
 
-LLVM_BIN_TAR=$LLVM_BIN_RELEASE_NAME.tar.xz
+echo CPU_COUNT: $CPU_COUNT
+
 LLVM_BIN_URL=http://releases.llvm.org/$LLVM_BIN_VERSION/$LLVM_BIN_TAR
 
 if [ $TARGET_CPU == "x86" ]; then
