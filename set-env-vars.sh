@@ -1,8 +1,8 @@
 # apparently, the set of targets in a LLVM binary release is... kind of random.
 # so we might need to take llvm-tblgen from another release. hence, LLVM_BIN_VERSION
 
-LLVM_VERSION=5.0.1
-LLVM_BIN_VERSION=5.0.1
+LLVM_VERSION=6.0.0
+LLVM_BIN_VERSION=6.0.0
 LLVM_SRC_TAR=llvm-$LLVM_VERSION.src.tar.xz
 LLVM_SRC_URL=http://releases.llvm.org/$LLVM_VERSION/$LLVM_SRC_TAR
 
