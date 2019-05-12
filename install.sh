@@ -8,11 +8,6 @@ wget --quiet $LLVM_SRC_URL
 mkdir -p llvm
 tar --strip-components=1 -xf $LLVM_SRC_TAR -C llvm
 
-# download and extract pre-built llvm-tblgen
-
-wget --quiet $LLVM_BIN_URL
-tar --strip-components=2 -xf $LLVM_BIN_TAR $LLVM_BIN_TAR_SUBDIR/bin/llvm-tblgen
-
 #. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
 # if it's not the prehistoric ubuntu, we are done with install

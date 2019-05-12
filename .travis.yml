@@ -35,8 +35,6 @@ script:
     - perl patch-lib-debuginfo.pl llvm/lib/DebugInfo/CMakeLists.txt
     - cat llvm/lib/DebugInfo/CMakeLists.txt
 
-    - $THIS_DIR/llvm-tblgen --help
-
     - mkdir llvm/build
     - pushd llvm/build
     - cmake .. $CMAKE_FLAGS
