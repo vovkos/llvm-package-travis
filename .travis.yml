@@ -32,8 +32,8 @@ before_install:
     - source install.sh
 
 script:
-    - perl patch-lib-debuginfo.pl llvm/lib/DebugInfo/CMakeLists.txt
-    - cat llvm/lib/DebugInfo/CMakeLists.txt
+#    - perl patch-lib-debuginfo.pl llvm/lib/DebugInfo/CMakeLists.txt
+#    - cat llvm/lib/DebugInfo/CMakeLists.txt
 
     - mkdir llvm/build
     - pushd llvm/build
