@@ -8,6 +8,12 @@ wget --quiet $LLVM_SRC_URL
 mkdir -p llvm
 tar --strip-components=1 -xf $LLVM_SRC_TAR -C llvm
 
+# download and unpack Clang sources
+
+wget --quiet $CLANG_SRC_URL
+mkdir -p clang
+tar --strip-components=1 -xf $CLANG_SRC_TAR -C clang
+
 #. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
 # if it's not the prehistoric ubuntu, we are done with install

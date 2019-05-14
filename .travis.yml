@@ -34,18 +34,29 @@ install:
 script:
     - mkdir llvm/build
     - pushd llvm/build
-    - cmake .. $CMAKE_FLAGS
+    - cmake .. $LLVM_CMAKE_FLAGS
     - make -j $CPU_COUNT
     - make install
     - popd
 
-    - tar -cv${TAR_COMPRESSION}f $LLVM_RELEASE_FILE $LLVM_RELEASE_NAME
+    - mkdir clang/build
+    - pushd clang/build
+    - cmake .. $CLANG_CMAKE_FLAGS
+    - make -j $CPU_COUNT
+    - make install
+    - popd
+
+    - tar -cvJf $LLVM_RELEASE_FILE $LLVM_RELEASE_NAME
+    - tar -cvJf $CLANG_RELEASE_FILE $CLANG_RELEASE_NAME
 
 deploy:
     provider:     releases
-    file:         $LLVM_RELEASE_FILE
     skip_cleanup: true
     overwrite:    true
+
+    file:
+        - $LLVM_RELEASE_FILE
+        - $CLANG_RELEASE_FILE
 
     api_key:
         secure:   lBqOSkQjhEn91Vkk0IWYEOgeiixph+lC1cnu+ng5ZIcxYD/FRSmv60qrB8hG/rex4O1LSAvJYx0WP2dIJymI5QmUZqwK2nB2m24b1vytvcgmY5oFbxHWUdV/ZgIakkhJqXoMEcVSUUoukpdfOwgnsCMClAoHqhghbLqFj8nz6FAyu8Q/JKzLR7d99Nuj6TSjLPazNjhamcOn6nKQEPW5Ut2Au8n+cGlL6IQWq477Q5uXFK0VL6gZP+TuEVpgf628RBmnDiHyrrnTL9SEw279/GES91h5P/S+MSBw5pD6oOzc5TIeDwb0j+UwAnJSQm/K9fHxWXK2+G6sVJ90zOs2vE27l7oqfzjUcIzy+Zo2bO6U9+77vHklGIU+JlW5tMLH1vG0HQg9YN8cL1amdFJDxh/rDOhs8pqj5nMLFAZ5jwcZsG3UPFBOs4cP8daGYi6EqCpbIFRfZ0thpPiLUEjvwe0FqLiuh+FWp2q5+5JP+WvyRyWrE3krnakmYGbBknMbq1yyIKjwEU42sktAIMkvRzfQs4OiijCv5ZaA7oDK6oSPUhlRkmvZytqIqICubRRRsj76QPAUpXCdTgg1VvGJp+EELX1WBZhRrrKWezu+bTRBLBAIy44RFTHnt+bC9XjEWLtzZFVupsoXHgGmnfI3iiSAvQccJaSz5FAcn/krmUc=
