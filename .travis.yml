@@ -27,14 +27,11 @@ matrix:
         - os:  osx
           env: TARGET_CPU=x86 BUILD_CONFIGURATION=Release
 
-before_install:
+install:
     - source set-env-vars.sh
     - source install.sh
 
 script:
-#    - perl patch-lib-debuginfo.pl llvm/lib/DebugInfo/CMakeLists.txt
-#    - cat llvm/lib/DebugInfo/CMakeLists.txt
-
     - mkdir llvm/build
     - pushd llvm/build
     - cmake .. $CMAKE_FLAGS

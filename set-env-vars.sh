@@ -1,8 +1,4 @@
-# apparently, the set of targets in a LLVM binary release is... kind of random.
-# so we might need to take llvm-tblgen from another release. hence, LLVM_BIN_VERSION
-
 LLVM_VERSION=8.0.0
-LLVM_BIN_VERSION=8.0.0
 LLVM_SRC_TAR=llvm-$LLVM_VERSION.src.tar.xz
 LLVM_SRC_URL=http://releases.llvm.org/$LLVM_VERSION/$LLVM_SRC_TAR
 
@@ -22,22 +18,13 @@ else
 	LLVM_BUILD_32_BITS=OFF
 fi
 
-# packing a debug build with xz takes too much time, travis ci times out
-
-if [ $BUILD_CONFIGURATION == "Debug" ]; then
-	DEBUG_SUFFIX=-dbg
-	TAR_COMPRESSION=z
-	TAR_FILE_EXT=.gz
-else
-	DEBUG_SUFFIX=
-	TAR_COMPRESSION=J
-	TAR_FILE_EXT=.xz
-fi
-
 THIS_DIR=`pwd`
 LLVM_RELEASE_NAME=llvm-$LLVM_VERSION-$TRAVIS_OS_NAME$CPU_SUFFIX$CC_SUFFIX$DEBUG_SUFFIX
 LLVM_RELEASE_DIR=$THIS_DIR/$LLVM_RELEASE_NAME
 LLVM_RELEASE_FILE=$LLVM_RELEASE_NAME.tar$TAR_FILE_EXT
+TAR_COMPRESSION=J
+TAR_FILE_EXT=.xz
+DEBUG_SUFFIX=
 
 CMAKE_FLAGS=(
 	-DCMAKE_INSTALL_PREFIX=$LLVM_RELEASE_DIR
@@ -54,9 +41,17 @@ CMAKE_FLAGS=(
 	-DLLVM_INCLUDE_GO_TESTS=OFF
 	-DLLVM_INCLUDE_RUNTIMES=OFF
 	-DLLVM_INCLUDE_TESTS=OFF
-	-DLLVM_INCLUDE_TOOLS=ON
 	-DLLVM_INCLUDE_UTILS=OFF
 	-DLLVM_TEMPORARILY_ALLOW_OLD_TOOLCHAIN=ON
 	)
+
+# don't try to build Debug tools -- executables will be huge and not really
+# essential (whoever needs tools, can just download a Release build)
+# also, the linker is OOM-killed sometimes thus failing the whole build.
+
+if [ $BUILD_CONFIGURATION == "Debug" ]; then
+	CMAKE_FLAGS+=(-DLLVM_INCLUDE_TOOLS=OFF)
+	DEBUG_SUFFIX=-dbg
+fi
 
 CMAKE_FLAGS=${CMAKE_FLAGS[*]}
