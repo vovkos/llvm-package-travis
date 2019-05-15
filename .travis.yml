@@ -32,22 +32,27 @@ install:
     - source install.sh
 
 script:
+    - echo LLVM_CPU_COUNT=$LLVM_CPU_COUNT
+    - echo LLVM_CMAKE_FLAGS=$LLVM_CMAKE_FLAGS
+    - echo CLANG_CPU_COUNT=$CLANG_CPU_COUNT
+    - echo CLANG_CMAKE_FLAGS=$CLANG_CMAKE_FLAGS
+
     - mkdir llvm/build
     - pushd llvm/build
     - cmake .. $LLVM_CMAKE_FLAGS
-    - make -j $CPU_COUNT
+    - make -j $LLVM_CPU_COUNT
     - make install
     - popd
 
     - mkdir clang/build
     - pushd clang/build
     - cmake .. $CLANG_CMAKE_FLAGS
-    - make -j $CPU_COUNT
+    - make -j $CLANG_CPU_COUNT
     - make install
     - popd
 
-    - tar -cvJf $LLVM_RELEASE_FILE $LLVM_RELEASE_NAME
-    - tar -cvJf $CLANG_RELEASE_FILE $CLANG_RELEASE_NAME
+    - travis_wait tar -cvJf $LLVM_RELEASE_FILE $LLVM_RELEASE_NAME
+    - travis_wait tar -cvJf $CLANG_RELEASE_FILE $CLANG_RELEASE_NAME
 
 deploy:
     provider:     releases
