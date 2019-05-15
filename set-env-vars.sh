@@ -20,17 +20,23 @@ else
 	LLVM_BUILD_32_BITS=OFF
 fi
 
+# compressing Debug binaries using xz takes too much time
+
 if [ $BUILD_CONFIGURATION == "Debug" ]; then
 	DEBUG_SUFFIX=-dbg
+	TAR_COMPRESSION=j
+	TAR_SUFFIX=.tar.bz2
 else
 	DEBUG_SUFFIX=
+	TAR_COMPRESSION=J
+	TAR_SUFFIX=.tar.xz
 fi
 
 THIS_DIR=`pwd`
 
 LLVM_RELEASE_NAME=llvm-$LLVM_VERSION-$TRAVIS_OS_NAME$CPU_SUFFIX$CC_SUFFIX$DEBUG_SUFFIX
 LLVM_RELEASE_DIR=$THIS_DIR/$LLVM_RELEASE_NAME
-LLVM_RELEASE_FILE=$LLVM_RELEASE_NAME.tar.xz
+LLVM_RELEASE_FILE=$LLVM_RELEASE_NAME$TAR_SUFFIX
 LLVM_CPU_COUNT=$CPU_COUNT
 
 LLVM_CMAKE_FLAGS=(
@@ -53,7 +59,7 @@ LLVM_CMAKE_FLAGS=(
 
 CLANG_RELEASE_NAME=clang-$LLVM_VERSION-$TRAVIS_OS_NAME$CPU_SUFFIX$CC_SUFFIX$DEBUG_SUFFIX
 CLANG_RELEASE_DIR=$THIS_DIR/$CLANG_RELEASE_NAME
-CLANG_RELEASE_FILE=$CLANG_RELEASE_NAME.tar.xz
+CLANG_RELEASE_FILE=$CLANG_RELEASE_NAME$TAR_SUFFIX
 CLANG_CPU_COUNT=$CPU_COUNT
 
 CLANG_CMAKE_FLAGS=(
@@ -68,9 +74,9 @@ CLANG_CMAKE_FLAGS=(
 	-DLIBCLANG_BUILD_STATIC=ON
 	)
 
-# don't try to build Debug tools -- executables will be huge and not really
-# essential (whoever needs tools, can just download a Release build)
-# also, the linker is OOM-killed sometimes thus failing the whole build.
+# don't build Debug tools -- executables will be huge and not really
+# essential (whoever needs tools, can just download a Release build);
+# linking multiple shared Debug libs in parallel gets linker OOM-killed
 
 if [ $BUILD_CONFIGURATION == "Debug" ]; then
 	LLVM_CMAKE_FLAGS+=(-DLLVM_INCLUDE_TOOLS=OFF -DLLVM_OPTIMIZED_TABLEGEN=ON)
