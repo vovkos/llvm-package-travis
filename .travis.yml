@@ -51,8 +51,8 @@ script:
     - make install
     - popd
 
-    - travis_wait tar -cvJf $LLVM_RELEASE_FILE $LLVM_RELEASE_NAME
-    - travis_wait tar -cvJf $CLANG_RELEASE_FILE $CLANG_RELEASE_NAME
+    - travis_wait 30 tar -cvJf $LLVM_RELEASE_FILE $LLVM_RELEASE_NAME
+    - travis_wait 30 tar -cvJf $CLANG_RELEASE_FILE $CLANG_RELEASE_NAME
 
 deploy:
     provider:     releases
