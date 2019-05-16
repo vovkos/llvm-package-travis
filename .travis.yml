@@ -41,6 +41,7 @@ script:
     - pushd llvm/build
     - cmake .. $LLVM_CMAKE_FLAGS
     - make -j $LLVM_CPU_COUNT
+    - make llvm-config
     - make install
     - popd
 
