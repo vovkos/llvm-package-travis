@@ -1,5 +1,3 @@
-LLVM_VERSION=3.4.2
-
 if [ $LLVM_VERSION >= "3.5.0" ]; then
 	TAR_SUFFIX=.tar.xz
 else
@@ -92,6 +90,7 @@ elif [ $LLVM_VERSION >= "3.5.0" ]; then
 else # 3.4.2
 	LLVM_CMAKE_FLAGS+=(-DHAVE_SANITIZER_MSAN_INTERFACE_H=0)
 	CLANG_CMAKE_FLAGS+=(-DCLANG_PATH_TO_LLVM_BUILD=$LLVM_RELEASE_DIR)
+	CLANG_CPU_COUNT=1 # target dependencies in clang-3.4.2 are not properly set
 fi
 
 # don't build Debug tools -- executables will be huge and not really

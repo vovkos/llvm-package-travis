@@ -8,6 +8,15 @@ wget --quiet $LLVM_SRC_URL
 mkdir -p llvm
 tar --strip-components=1 -xf $LLVM_SRC_TAR -C llvm
 
+# on Debug builds patch CMakeLists.cmake to always build and install llvm-config
+
+if [ $TRAVIS_OS_NAME != "linux" ]; then
+	echo "set_target_properties(llvm-config PROPERTIES EXCLUDE_FROM_ALL FALSE)" >> llvm/CMakeLists.cmake
+	echo "install(TARGETS llvm-config RUNTIME DESTINATION bin)" >> llvm/CMakeLists.cmake
+fi
+
+#. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
 # download and unpack Clang sources
 
 wget --quiet $CLANG_SRC_URL

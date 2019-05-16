@@ -11,31 +11,33 @@ compiler:
     - clang
 
 env:
-    - TARGET_CPU=amd64 BUILD_CONFIGURATION=Debug
-    - TARGET_CPU=amd64 BUILD_CONFIGURATION=Release
-    - TARGET_CPU=x86 BUILD_CONFIGURATION=Debug
-    - TARGET_CPU=x86 BUILD_CONFIGURATION=Release
+    global:
+        - LLVM_VERSION=3.4.2
+
+    matrix:
+        - TARGET_CPU=amd64 BUILD_CONFIGURATION=Debug
+        - TARGET_CPU=amd64 BUILD_CONFIGURATION=Release
+        - TARGET_CPU=x86 BUILD_CONFIGURATION=Debug
+        - TARGET_CPU=x86 BUILD_CONFIGURATION=Release
 
 matrix:
     exclude:
-        - os:       osx
-          compiler: gcc
+        -   os:       osx
+            compiler: gcc
 
-        - os:  osx
-          env: TARGET_CPU=x86 BUILD_CONFIGURATION=Debug
+        -   os:  osx
+            env: TARGET_CPU=x86 BUILD_CONFIGURATION=Debug
 
-        - os:  osx
-          env: TARGET_CPU=x86 BUILD_CONFIGURATION=Release
+        -   os:  osx
+            env: TARGET_CPU=x86 BUILD_CONFIGURATION=Release
 
 install:
     - source set-env-vars.sh
     - source install.sh
 
 script:
-    - echo LLVM_CPU_COUNT=$LLVM_CPU_COUNT
     - echo LLVM_CMAKE_FLAGS=$LLVM_CMAKE_FLAGS
-    - echo CLANG_CPU_COUNT=$CLANG_CPU_COUNT
-    - echo CLANG_CMAKE_FLAGS=$CLANG_CMAKE_FLAGS
+    - echo LLVM_CPU_COUNT=$LLVM_CPU_COUNT
 
     - mkdir llvm/build
     - pushd llvm/build
@@ -44,6 +46,9 @@ script:
     - make llvm-config
     - make install
     - popd
+
+    - echo CLANG_CMAKE_FLAGS=$CLANG_CMAKE_FLAGS
+    - echo CLANG_CPU_COUNT=$CLANG_CPU_COUNT
 
     - mkdir clang/build
     - pushd clang/build
