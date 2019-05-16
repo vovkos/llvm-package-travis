@@ -8,11 +8,11 @@ wget --quiet $LLVM_SRC_URL
 mkdir -p llvm
 tar --strip-components=1 -xf $LLVM_SRC_TAR -C llvm
 
-# on Debug builds patch CMakeLists.cmake to always build and install llvm-config
+# on Debug builds patch llvm-config/CMakeLists.txt to always build and install llvm-config
 
-if [ $TRAVIS_OS_NAME != "linux" ]; then
-	echo "set_target_properties(llvm-config PROPERTIES EXCLUDE_FROM_ALL FALSE)" >> llvm/CMakeLists.cmake
-	echo "install(TARGETS llvm-config RUNTIME DESTINATION bin)" >> llvm/CMakeLists.cmake
+if [ $BUILD_CONFIGURATION == "Debug" ]; then
+	echo "set_target_properties(llvm-config PROPERTIES EXCLUDE_FROM_ALL FALSE)" >> llvm/tools/llvm-config/CMakeLists.txt
+	echo "install(TARGETS llvm-config RUNTIME DESTINATION bin)" >> llvm/tools/llvm-config/CMakeLists.txt
 fi
 
 #. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
