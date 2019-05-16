@@ -91,7 +91,7 @@ elif [ $LLVM_VERSION >= "3.5.0" ]; then
 	CLANG_CMAKE_FLAGS+=(-DLLVM_CONFIG=$LLVM_RELEASE_DIR/bin/llvm-config)
 else # 3.4.2
 	LLVM_CMAKE_FLAGS+=(-DHAVE_SANITIZER_MSAN_INTERFACE_H=0)
-	CLANG_CMAKE_FLAGS+=(-DCLANG_LLVM_BUILD_DIR=$LLVM_RELEASE_DIR/share/llvm/cmake)
+	CLANG_CMAKE_FLAGS+=(-DCLANG_LLVM_BUILD_DIR=$LLVM_RELEASE_DIR)
 fi
 
 # don't build Debug tools -- executables will be huge and not really
