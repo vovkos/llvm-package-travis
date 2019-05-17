@@ -10,7 +10,7 @@ LLVM packages for Travis CI
 Releases
 --------
 
-* `LLVM + LibClang 3.4.2 <https://github.com/vovkos/llvm-package-travis/releases/llvm-3.4.2>`_
+* `LLVM + LibClang 3.4.2 <https://github.com/vovkos/llvm-package-travis/releases/llvm-3.4.2-a>`_
 
 Abstract
 --------
