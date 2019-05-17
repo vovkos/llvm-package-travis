@@ -1,7 +1,7 @@
-if [ $LLVM_VERSION >= "3.5.0" ]; then
-	TAR_SUFFIX=.tar.xz
-else
+if [[ $LLVM_VERSION < "3.5.0" ]]; then
 	TAR_SUFFIX=.tar.gz
+else
+	TAR_SUFFIX=.tar.xz
 fi
 
 LLVM_SRC_TAR=llvm-$LLVM_VERSION.src$TAR_SUFFIX
@@ -26,18 +26,19 @@ else
 fi
 
 DEBUG_SUFFIX=
-TAR_COMPRESSION=J
-TAR_SUFFIX=.tar.xz
 
 if [ $BUILD_CONFIGURATION == "Debug" ]; then
 	DEBUG_SUFFIX=-dbg
+fi
 
-	# compressing Debug binaries using xz takes too much time
+# compressing binaries using xz takes too much time
 
-	if [ $LLVM_VERSION >= "8.0.0" ]; then
-		TAR_COMPRESSION=j
-		TAR_SUFFIX=.tar.bz2
-	fi
+if [[ $LLVM_VERSION < "8.0.0" ]]; then
+	TAR_COMPRESSION=J
+	TAR_SUFFIX=.tar.xz
+else
+	TAR_COMPRESSION=j
+	TAR_SUFFIX=.tar.bz2
 fi
 
 THIS_DIR=`pwd`
@@ -81,19 +82,19 @@ CLANG_CMAKE_FLAGS=(
 	-DLIBCLANG_BUILD_STATIC=ON
 	)
 
-# version specific settings
+# add version specific settings
 
-if [ $LLVM_VERSION >= "3.8.0" ]; then
-	CLANG_CMAKE_FLAGS+=(-DLLVM_DIR=$LLVM_RELEASE_DIR/lib/cmake/llvm)
-elif [ $LLVM_VERSION >= "3.5.0" ]; then
-	CLANG_CMAKE_FLAGS+=(-DLLVM_CONFIG=$LLVM_RELEASE_DIR/bin/llvm-config)
-else # 3.4.2
+if [[ $LLVM_VERSION < "3.5.0" ]]; then
 	LLVM_CMAKE_FLAGS+=(-DHAVE_SANITIZER_MSAN_INTERFACE_H=0)
 
 	CLANG_CMAKE_FLAGS+=(
 		-DCLANG_PATH_TO_LLVM_BUILD=$LLVM_RELEASE_DIR
 		-DLLVM_MAIN_SRC_DIR=$LLVM_RELEASE_DIR
 		)
+elif [[ $LLVM_VERSION < "8.0.0" ]]; then
+	CLANG_CMAKE_FLAGS+=(-DLLVM_CONFIG=$LLVM_RELEASE_DIR/bin/llvm-config)
+else
+	CLANG_CMAKE_FLAGS+=(-DLLVM_DIR=$LLVM_RELEASE_DIR/lib/cmake/llvm)
 fi
 
 # don't build Debug tools -- executables will be huge and not really
