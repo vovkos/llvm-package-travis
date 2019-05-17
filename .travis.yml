@@ -13,6 +13,7 @@ compiler:
 env:
     global:
         - LLVM_VERSION=3.9.1
+        - TAR_COMPRESSION=bzip2
 
     matrix:
         - TARGET_CPU=amd64 BUILD_CONFIGURATION=Debug
@@ -56,8 +57,8 @@ script:
     - make install
     - popd
 
-    - travis_wait tar -cv${TAR_COMPRESSION}f $LLVM_RELEASE_FILE $LLVM_RELEASE_NAME
-    - travis_wait tar -cv${TAR_COMPRESSION}f $CLANG_RELEASE_FILE $CLANG_RELEASE_NAME
+    - travis_wait tar --${TAR_COMPRESSION} -cvf $LLVM_RELEASE_FILE $LLVM_RELEASE_NAME
+    - travis_wait tar --${TAR_COMPRESSION} -cvf $CLANG_RELEASE_FILE $CLANG_RELEASE_NAME
 
 deploy:
     provider:     releases
