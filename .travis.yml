@@ -15,7 +15,7 @@ env:
         - BUILD_PROJECT=llvm
         - LLVM_VERSION=3.4.2
         - LLVM_RELEASE_TAG=llvm-3.4.2-b
-        - TAR_COMPRESSION=bzip2
+        - TAR_COMPRESSION=xz
 
     matrix:
         - TARGET_CPU=amd64 BUILD_CONFIGURATION=Debug

@@ -2,7 +2,7 @@
 
 #. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
-case $BUILD_PROJECT in
+case "$BUILD_PROJECT" in
 "llvm")
 	echo LLVM_CMAKE_FLAGS=$LLVM_CMAKE_FLAGS
 	echo LLVM_CPU_COUNT=$LLVM_CPU_COUNT
@@ -14,7 +14,7 @@ case $BUILD_PROJECT in
 	make install
 	popd
 
-	travis_wait tar --${TAR_COMPRESSION} -cvf $LLVM_RELEASE_TAR $LLVM_RELEASE_NAME
+	travis_wait 50 tar --${TAR_COMPRESSION} -cvf $LLVM_RELEASE_TAR $LLVM_RELEASE_NAME
 	;;
 
 "clang")
@@ -28,7 +28,7 @@ case $BUILD_PROJECT in
 	make install
 	popd
 
-	travis_wait tar --${TAR_COMPRESSION} -cvf $CLANG_RELEASE_TAR $CLANG_RELEASE_NAME
+	travis_wait 50 tar --${TAR_COMPRESSION} -cvf $CLANG_RELEASE_TAR $CLANG_RELEASE_NAME
 	;;
 esac
 

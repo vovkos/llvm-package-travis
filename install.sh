@@ -2,7 +2,7 @@
 
 #. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
-case $BUILD_PROJECT in
+case "$BUILD_PROJECT" in
 "llvm")
 	# download and unpack LLVM sources
 
