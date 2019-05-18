@@ -12,7 +12,7 @@ compiler:
 
 env:
     global:
-        - LLVM_VERSION=3.4.2
+        - LLVM_VERSION=8.0.0
         - TAR_COMPRESSION=bzip2
 
     matrix:
