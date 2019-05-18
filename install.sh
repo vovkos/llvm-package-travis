@@ -33,7 +33,7 @@ case "$BUILD_PROJECT" in
 	;;
 
 *)
-	echo Invalid project $BUILD_PROJECT (must be 'llvm' or 'clang')
+	echo "Invalid project $BUILD_PROJECT (must be 'llvm' or 'clang')"
 	exit -1
 esac
 
