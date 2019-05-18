@@ -2,26 +2,40 @@
 
 #. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
-# download and unpack LLVM sources
+case $BUILD_PROJECT in
+"llvm")
+	# download and unpack LLVM sources
 
-wget --quiet $LLVM_SRC_URL
-mkdir -p llvm
-tar --strip-components=1 -xf $LLVM_SRC_TAR -C llvm
+	wget --quiet $LLVM_SRC_URL
+	mkdir -p llvm
+	tar --strip-components=1 -xf $LLVM_SRC_TAR -C llvm
 
-# on Debug builds patch llvm-config/CMakeLists.txt to always build and install llvm-config
+	# on Debug builds patch llvm-config/CMakeLists.txt to always build and install llvm-config
 
-if [ $BUILD_CONFIGURATION == "Debug" ]; then
-	echo "set_target_properties(llvm-config PROPERTIES EXCLUDE_FROM_ALL FALSE)" >> llvm/tools/llvm-config/CMakeLists.txt
-	echo "install(TARGETS llvm-config RUNTIME DESTINATION bin)" >> llvm/tools/llvm-config/CMakeLists.txt
-fi
+	if [ $BUILD_CONFIGURATION == "Debug" ]; then
+		echo "set_target_properties(llvm-config PROPERTIES EXCLUDE_FROM_ALL FALSE)" >> llvm/tools/llvm-config/CMakeLists.txt
+		echo "install(TARGETS llvm-config RUNTIME DESTINATION bin)" >> llvm/tools/llvm-config/CMakeLists.txt
+	fi
+	;;
 
-#. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+"clang")
+	# download and unpack Clang sources
 
-# download and unpack Clang sources
+	wget --quiet $CLANG_SRC_URL
+	mkdir -p clang
+	tar --strip-components=1 -xf $CLANG_SRC_TAR -C clang
 
-wget --quiet $CLANG_SRC_URL
-mkdir -p clang
-tar --strip-components=1 -xf $CLANG_SRC_TAR -C clang
+	# download and unpack LLVM release package from llvm-package-travis
+
+	wget --quiet $LLVM_RELEASE_URL
+	mkdir -p llvm
+	tar -xf $LLVM_RELEASE_TAR -C llvm
+	;;
+
+*)
+	echo Invalid project $BUILD_PROJECT (must be 'llvm' or 'clang')
+	exit -1
+esac
 
 #. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 

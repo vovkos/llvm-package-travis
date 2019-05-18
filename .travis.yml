@@ -12,7 +12,9 @@ compiler:
 
 env:
     global:
-        - LLVM_VERSION=8.0.0
+        - BUILD_PROJECT=llvm
+        - LLVM_VERSION=3.4.2
+        - LLVM_RELEASE_TAG=llvm-3.4.2-b
         - TAR_COMPRESSION=bzip2
 
     matrix:
@@ -37,28 +39,7 @@ install:
     - source install.sh
 
 script:
-    - echo LLVM_CMAKE_FLAGS=$LLVM_CMAKE_FLAGS
-    - echo LLVM_CPU_COUNT=$LLVM_CPU_COUNT
-
-    - mkdir llvm/build
-    - pushd llvm/build
-    - cmake .. $LLVM_CMAKE_FLAGS
-    - make -j $LLVM_CPU_COUNT
-    - make install
-    - popd
-
-    - echo CLANG_CMAKE_FLAGS=$CLANG_CMAKE_FLAGS
-    - echo CLANG_CPU_COUNT=$CLANG_CPU_COUNT
-
-    - mkdir clang/build
-    - pushd clang/build
-    - cmake .. $CLANG_CMAKE_FLAGS
-    - make -j $CLANG_CPU_COUNT
-    - make install
-    - popd
-
-    - travis_wait tar --${TAR_COMPRESSION} -cvf $LLVM_RELEASE_FILE $LLVM_RELEASE_NAME
-    - travis_wait tar --${TAR_COMPRESSION} -cvf $CLANG_RELEASE_FILE $CLANG_RELEASE_NAME
+    - source build.sh
 
 deploy:
     provider:     releases
@@ -66,8 +47,8 @@ deploy:
     overwrite:    true
 
     file:
-        - $LLVM_RELEASE_FILE
-        - $CLANG_RELEASE_FILE
+        - $LLVM_RELEASE_TAR
+        - $CLANG_RELEASE_TAR
 
     api_key:
         secure:   "S6oPaEdOiAmh/xtfMJrEqJ+va3nc/2CKLJUH5MDUz5R+bAaD/YQySBLncvmhNO5GJmmaQN2KEcPFRdMdxLs+qF7+sxl92UQIcfSonMCur9Na7oXj7H7ULrKk7qIdhYy0ldP1wAa9CnwskxaTdsJsu37xOrHRS48a5vcrEM9YW6Jg90IIwOD9o03FSoq4WMBggW34v2NjPtXNd6bBVKE/bsdRvABrziXTz78jg14741qSDC6QW6c2snD8prIeaxXI4wLiHqsdlOsDjxvOcRwnY4hvCOfOVwXs0pKypFy6PR7DCngV557ze6j0kH4l56d5axxqc1/EHmpPFcYZcxG2afinMdBEBVmmxDx6/AqogrMgrhzEMgkxZrgvl8K5mTqfO7hzSUigZrMbA8aFwibEcwM2hrEBSLBdCEk9UOjyCm416ZuE98r3jg6erNoOd4IViGu0snzldnxq0msj2+rajR1UcItyeos7VtMLY2DKtRp4XH9kTSmgI6RzvkTG9AvrOT0fq1z/Dnd8Py5fTNArcqL/gAPWGkFtzXi+fJVhtOZhAAt1tJmRSqX+HQEQy036VbrCzvRTTsOO40ja4Suuu9MXY7+Z6Gq9KL26ScAifyhcN6W5Q7TfTjNdnM/XQOgQc2TbG3JHXt0I72nG0jA1DX9RzL6VBdOXfgPF1FE07mY="
