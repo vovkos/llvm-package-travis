@@ -12,7 +12,7 @@ compiler:
 
 env:
     global:
-        - BUILD_PROJECT=llvm
+        - BUILD_PROJECT=clang
         - LLVM_VERSION=3.4.2
         - LLVM_RELEASE_TAG=llvm-3.4.2-b
         - TAR_COMPRESSION=xz
