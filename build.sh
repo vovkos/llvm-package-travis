@@ -1,13 +1,10 @@
 #!/bin/bash
-# set -e
+set -e
 
 #. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
 case "$BUILD_PROJECT" in
 "llvm")
-	echo LLVM_CMAKE_FLAGS=$LLVM_CMAKE_FLAGS
-	echo LLVM_CPU_COUNT=$LLVM_CPU_COUNT
-
 	mkdir llvm/build
 	pushd llvm/build
 	cmake .. $LLVM_CMAKE_FLAGS
@@ -19,9 +16,6 @@ case "$BUILD_PROJECT" in
 	;;
 
 "clang")
-	echo CLANG_CMAKE_FLAGS=$CLANG_CMAKE_FLAGS
-	echo CLANG_CPU_COUNT=$CLANG_CPU_COUNT
-
 	mkdir clang/build
 	pushd clang/build
 	cmake .. $CLANG_CMAKE_FLAGS

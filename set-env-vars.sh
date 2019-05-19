@@ -12,10 +12,12 @@ CLANG_SRC_URL=http://releases.llvm.org/$LLVM_VERSION/$CLANG_SRC_TAR
 if [ $TRAVIS_OS_NAME == "osx" ]; then
 	CPU_COUNT=$(sysctl -n hw.ncpu)
 	CPU_SUFFIX=
+	DIST_SUFFIX=
 	CC_SUFFIX=
 else
 	CPU_COUNT=$(nproc)
 	CPU_SUFFIX=-$TARGET_CPU
+	DIST_SUFFIX=-$TRAVIS_DIST
 	CC_SUFFIX=-$CC
 fi
 
@@ -43,10 +45,10 @@ THIS_DIR=`pwd`
 
 #. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
-LLVM_RELEASE_NAME=llvm-$LLVM_VERSION-$TRAVIS_OS_NAME$CPU_SUFFIX$CC_SUFFIX$DEBUG_SUFFIX
+LLVM_RELEASE_NAME=llvm-$LLVM_VERSION-$TRAVIS_OS_NAME$DIST_SUFFIX$CPU_SUFFIX$CC_SUFFIX$DEBUG_SUFFIX
 LLVM_RELEASE_DIR=$THIS_DIR/$LLVM_RELEASE_NAME
 LLVM_RELEASE_TAR=$LLVM_RELEASE_NAME$TAR_SUFFIX
-LLVM_RELEASE_URL=https://github.com/vovkos/llvm-package-travis/releases/download/$LLVM_RELEASE_TAG/$LLVM_RELEASE_TAR
+LLVM_RELEASE_URL=https://github.com/vovkos/llvm-package-travis/releases/download/llvm-$LLVM_VERSION$DIST_SUFFIX/$LLVM_RELEASE_TAR
 LLVM_CPU_COUNT=$CPU_COUNT
 
 LLVM_CMAKE_FLAGS=(
@@ -152,5 +154,7 @@ echo CLANG_SRC_URL:     $CLANG_SRC_URL
 echo CLANG_RELEASE_TAR: $CLANG_RELEASE_TAR
 echo CLANG_CMAKE_FLAGS: $CLANG_CMAKE_FLAGS
 echo ---------------------------------------------------------------------------
-echo DEPLOY_TAR: $DEPLOY_TAR%
+echo DEPLOY_TAR: $DEPLOY_TAR
 echo ---------------------------------------------------------------------------
+
+env | sort

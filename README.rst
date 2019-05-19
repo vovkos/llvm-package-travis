@@ -11,24 +11,57 @@ Releases
 --------
 
 .. list-table::
+	:header-rows: 1
 
 	*	- LLVM Version
-		- Clang Version
+		- LLVM Build
+		- Clang Build
 		- Remarks
 
-	*	- `LLVM 8.0.0 <https://github.com/vovkos/llvm-package-travis/releases/llvm-8.0.0>`_
-		- `Clang 8.0.0 <https://github.com/vovkos/llvm-package-travis/releases/clang-8.0.0>`_
+	*	-
+			| LLVM 8.0.0
+			| 2019-Mar-20
+
+		-	+ `llvm-8.0.0-xenial <https://github.com/vovkos/llvm-package-travis/releases/llvm-8.0.0-xenial>`__
+			+ `llvm-8.0.0-trusty <https://github.com/vovkos/llvm-package-travis/releases/llvm-8.0.0-trusty>`__
+			+ `llvm-8.0.0-osx <https://github.com/vovkos/llvm-package-travis/releases/llvm-8.0.0-osx>`__
+
+		-	+ `clang-8.0.0-xenial <https://github.com/vovkos/llvm-package-travis/releases/clang-8.0.0-xenial>`__
+			+ `clang-8.0.0-trusty <https://github.com/vovkos/llvm-package-travis/releases/clang-8.0.0-trusty>`__
+			+ `clang-8.0.0-osx <https://github.com/vovkos/llvm-package-travis/releases/clang-8.0.0-osx>`__
+
 		- The latest and greatest LLVM
 
-	*	- `LLVM 3.9.1 <https://github.com/vovkos/llvm-package-travis/releases/llvm-3.9.1>`_
-		- `Clang 3.9.1 <https://github.com/vovkos/llvm-package-travis/releases/clang-3.9.1>`_
+	*	-
+			| LLVM 3.9.1
+			| 2016-Dec-23
+
+		-	+ `llvm-3.9.1-xenial <https://github.com/vovkos/llvm-package-travis/releases/llvm-3.9.1-xenial>`__
+			+ `llvm-3.9.1-trusty <https://github.com/vovkos/llvm-package-travis/releases/llvm-3.9.1-trusty>`__
+			+ `llvm-3.9.1-osx <https://github.com/vovkos/llvm-package-travis/releases/llvm-3.9.1-osx>`__
+
+		-	+ `clang-3.9.1-xenial <https://github.com/vovkos/llvm-package-travis/releases/clang-3.9.1-xenial>`__
+			+ `clang-3.9.1-trusty <https://github.com/vovkos/llvm-package-travis/releases/clang-3.9.1-trusty>`__
+			+ `clang-3.9.1-osx <https://github.com/vovkos/llvm-package-travis/releases/clang-3.9.1-osx>`__
+
 		- The latest LLVM which still can be compiled with MSVC 2013
 
-	*	- `LLVM 3.4.2 <https://github.com/vovkos/llvm-package-travis/releases/llvm-3.4.2-b>`_
-		- `Clang 3.4.2 <https://github.com/vovkos/llvm-package-travis/releases/clang-3.4.2>`_
+	*	-
+			| LLVM 3.4.2
+			| 2014-Jun-19
+
+		-	+ `llvm-3.4.2-xenial <https://github.com/vovkos/llvm-package-travis/releases/llvm-3.4.2-xenial>`__
+			+ `llvm-3.4.2-trusty <https://github.com/vovkos/llvm-package-travis/releases/llvm-3.4.2-trusty>`__
+			+ `llvm-3.4.2-osx <https://github.com/vovkos/llvm-package-travis/releases/llvm-3.4.2-osx>`__
+
+		-	+ `clang-3.4.2-xenial <https://github.com/vovkos/llvm-package-travis/releases/clang-3.4.2-xenial>`__
+			+ `clang-3.4.2-trusty <https://github.com/vovkos/llvm-package-travis/releases/clang-3.4.2-trusty>`__
+			+ `clang-3.4.2-osx <https://github.com/vovkos/llvm-package-travis/releases/clang-3.4.2-osx>`__
+
 		- The latest LLVM which still can be compiled with MSVC 2010
 
-	*	- LLVM x.x.x
+	*	-
+		- LLVM x.x.x
 		- Clang x.x.x
 		- Create a `new issue <https://github.com/vovkos/llvm-package-travis/issues/new>`__ to request a particular LLVM version
 
@@ -42,12 +75,13 @@ So why not using pre-built packages from the official `LLVM download page <http:
 The ``llvm-package-travis`` project builds all major versions of both LLVM and LibClang on Travis CI (so there's a guarantee of binary compatibility) and for a consistent and much more complete build matrix:
 
 * OS:
+	- Linux Ubuntu 16.04 (Xenial Xerus)
 	- Linux Ubuntu 14.04 (Trusty Tahr)
 	- Mac OS X
 
 * Compiler:
-	- gcc++ (Linux only)
-	- clang++
+	- GCC (Linux only)
+	- Clang
 
 * Configuration:
 	- Debug (libraries only, no tools)

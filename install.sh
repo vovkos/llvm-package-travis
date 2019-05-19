@@ -1,5 +1,5 @@
 #!/bin/bash
-# set -e
+set -e
 
 #. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
@@ -35,9 +35,19 @@ esac
 
 #. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
-# if it's not the prehistoric ubuntu, we are done with install
+# multilib for x86 (Linux only)
 
-if [ $TRAVIS_OS_NAME != "linux" ]; then
+if [[ $TARGET_CPU == "x86" ]]; then
+	sudo dpkg --add-architecture i386
+	sudo apt-get -qq update
+	sudo apt-get install -y g++-multilib
+fi
+
+#. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+# if it's not the prehistoric 14.04 Trusty Tahr, we are done with install
+
+if [[ $TRAVIS_OS_NAME != "linux" || $TRAVIS_DIST != "trusty" ]]; then
 	return
 fi
 
@@ -58,11 +68,3 @@ tar --strip-components=1 -xzf $CMAKE_TAR -C $CMAKE_DIR
 export PATH=$CMAKE_DIR/bin:$PATH
 
 #. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
-
-# now to official APT packages
-
-if [ "$TARGET_CPU" == "x86" ]; then
-	sudo dpkg --add-architecture i386
-	sudo apt-get -qq update
-	sudo apt-get install -y g++-multilib
-fi

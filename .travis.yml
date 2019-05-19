@@ -1,20 +1,32 @@
-dist:     trusty
-sudo:     required
 language: cpp
 
-os:
-    - linux
-    - osx
+# a) Ubuntu 14.04 Trusty Tahr
 
+os: linux
+dist: trusty
+sudo: required
 compiler:
-    - gcc
-    - clang
+   - gcc
+   - clang
+
+# b) Ubuntu 16.04 Xenial Xerus
+
+# os: linux
+# dist: xenial
+# sudo: required
+# compiler:
+#     - gcc
+#     - clang
+
+# c) Mac OS X
+
+# os: osx
+# compiler: clang
 
 env:
     global:
         - BUILD_PROJECT=llvm
-        - LLVM_VERSION=3.9.1
-        - LLVM_RELEASE_TAG=llvm-3.9.1-a
+        - LLVM_VERSION=3.4.2
         - TAR_COMPRESSION=xz
 
     matrix:
@@ -25,9 +37,6 @@ env:
 
 matrix:
     exclude:
-        -   os:       osx
-            compiler: gcc
-
         -   os:  osx
             env: TARGET_CPU=x86 BUILD_CONFIGURATION=Debug
 
