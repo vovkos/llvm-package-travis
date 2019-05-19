@@ -1,4 +1,5 @@
 #!/bin/bash
+# set -e
 
 #. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
@@ -27,7 +28,9 @@ case "$BUILD_PROJECT" in
 
 	# download and unpack LLVM release package from llvm-package-travis
 
-	wget --quiet $LLVM_RELEASE_URL
+	echo $LLVM_RELEASE_URL
+
+	wget $LLVM_RELEASE_URL
 	mkdir -p llvm
 	tar -xf $LLVM_RELEASE_TAR -C llvm
 	;;
