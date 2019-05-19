@@ -28,11 +28,8 @@ case "$BUILD_PROJECT" in
 
 	# download and unpack LLVM release package from llvm-package-travis
 
-	echo $LLVM_RELEASE_URL
-
-	wget $LLVM_RELEASE_URL
-	mkdir -p llvm
-	tar -xf $LLVM_RELEASE_TAR -C llvm
+	wget --quiet $LLVM_RELEASE_URL
+	tar -xf $LLVM_RELEASE_TAR
 	;;
 
 *)
