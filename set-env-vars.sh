@@ -41,6 +41,8 @@ fi
 
 THIS_DIR=`pwd`
 
+#. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
 LLVM_RELEASE_NAME=llvm-$LLVM_VERSION-$TRAVIS_OS_NAME$CPU_SUFFIX$CC_SUFFIX$DEBUG_SUFFIX
 LLVM_RELEASE_DIR=$THIS_DIR/$LLVM_RELEASE_NAME
 LLVM_RELEASE_TAR=$LLVM_RELEASE_NAME$TAR_SUFFIX
@@ -65,6 +67,8 @@ LLVM_CMAKE_FLAGS=(
 	-DLLVM_TEMPORARILY_ALLOW_OLD_TOOLCHAIN=ON
 	)
 
+#. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
 CLANG_RELEASE_NAME=clang-$LLVM_VERSION-$TRAVIS_OS_NAME$CPU_SUFFIX$CC_SUFFIX$DEBUG_SUFFIX
 CLANG_RELEASE_DIR=$THIS_DIR/$CLANG_RELEASE_NAME
 CLANG_RELEASE_TAR=$CLANG_RELEASE_NAME$TAR_SUFFIX
@@ -81,6 +85,8 @@ CLANG_CMAKE_FLAGS=(
 	-DCLANG_INCLUDE_TESTS=OFF
 	-DLIBCLANG_BUILD_STATIC=ON
 	)
+
+#. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
 # add version specific settings
 
@@ -119,3 +125,32 @@ fi
 
 LLVM_CMAKE_FLAGS=${LLVM_CMAKE_FLAGS[*]}
 CLANG_CMAKE_FLAGS=${CLANG_CMAKE_FLAGS[*]}
+
+#. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+case "$BUILD_PROJECT" in
+"llvm")
+	DEPLOY_TAR=$LLVM_RELEASE_TAR
+	;;
+
+"clang")
+	DEPLOY_TAR=$CLANG_RELEASE_TAR
+	;;
+
+*)
+	echo "Invalid project $BUILD_PROJECT (must be 'llvm' or 'clang')"
+	exit -1
+esac
+
+echo ---------------------------------------------------------------------------
+echo LLVM_SRC_URL:     $LLVM_SRC_URL
+echo LLVM_RELEASE_TAR: $LLVM_RELEASE_TAR
+echo LLVM_RELEASE_URL: $LLVM_RELEASE_URL
+echo LLVM_CMAKE_FLAGS: $LLVM_CMAKE_FLAGS
+echo ---------------------------------------------------------------------------
+echo CLANG_SRC_URL:     $CLANG_SRC_URL
+echo CLANG_RELEASE_TAR: $CLANG_RELEASE_TAR
+echo CLANG_CMAKE_FLAGS: $CLANG_CMAKE_FLAGS
+echo ---------------------------------------------------------------------------
+echo DEPLOY_TAR: $DEPLOY_TAR%
+echo ---------------------------------------------------------------------------

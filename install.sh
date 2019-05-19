@@ -31,10 +31,6 @@ case "$BUILD_PROJECT" in
 	wget --quiet $LLVM_RELEASE_URL
 	tar -xf $LLVM_RELEASE_TAR
 	;;
-
-*)
-	echo "Invalid project $BUILD_PROJECT (must be 'llvm' or 'clang')"
-	exit -1
 esac
 
 #. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
