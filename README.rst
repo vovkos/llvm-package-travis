@@ -13,14 +13,12 @@ Releases
 .. list-table::
 	:header-rows: 1
 
-	*	- LLVM Version
-		- LLVM Build
-		- Clang Build
+	*	- LLVM Date
+		- LLVM Version
+		- Clang Version
 		- Remarks
 
-	*	-
-			| LLVM 8.0.0
-			| 2019-Mar-20
+	*	-	2019-Mar-20
 
 		-	+ `llvm-8.0.0-linux-xenial <https://github.com/vovkos/llvm-package-travis/releases/llvm-8.0.0-linux-xenial>`__
 			+ `llvm-8.0.0-linux-trusty <https://github.com/vovkos/llvm-package-travis/releases/llvm-8.0.0-linux-trusty>`__
@@ -32,9 +30,7 @@ Releases
 
 		- The latest and greatest LLVM
 
-	*	-
-			| LLVM 3.9.1
-			| 2016-Dec-23
+	*	-	2016-Dec-23
 
 		-	+ `llvm-3.9.1-linux-xenial <https://github.com/vovkos/llvm-package-travis/releases/llvm-3.9.1-linux-xenial>`__
 			+ `llvm-3.9.1-linux-trusty <https://github.com/vovkos/llvm-package-travis/releases/llvm-3.9.1-linux-trusty>`__
@@ -46,9 +42,7 @@ Releases
 
 		- The latest LLVM which still can be compiled with MSVC 2013
 
-	*	-
-			| LLVM 3.4.2
-			| 2014-Jun-19
+	*	- 	2014-Jun-19
 
 		-	+ `llvm-3.4.2-linux-xenial <https://github.com/vovkos/llvm-package-travis/releases/llvm-3.4.2-linux-xenial>`__
 			+ `llvm-3.4.2-linux-trusty <https://github.com/vovkos/llvm-package-travis/releases/llvm-3.4.2-linux-trusty>`__
