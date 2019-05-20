@@ -7,7 +7,7 @@ case "$BUILD_PROJECT" in
 "llvm")
 	# download and unpack LLVM sources
 
-	wget --quiet $LLVM_SRC_URL
+	wget $LLVM_SRC_URL
 	mkdir -p llvm
 	tar --strip-components=1 -xf $LLVM_SRC_TAR -C llvm
 
@@ -22,13 +22,13 @@ case "$BUILD_PROJECT" in
 "clang")
 	# download and unpack Clang sources
 
-	wget --quiet $CLANG_SRC_URL
+	wget $CLANG_SRC_URL
 	mkdir -p clang
 	tar --strip-components=1 -xf $CLANG_SRC_TAR -C clang
 
 	# download and unpack LLVM release package from llvm-package-travis
 
-	wget --quiet $LLVM_RELEASE_URL
+	wget $LLVM_RELEASE_URL
 	tar -xf $LLVM_RELEASE_TAR
 	;;
 esac
@@ -62,7 +62,7 @@ CMAKE_TAR=cmake-$CMAKE_VERSION-$CMAKE_OS.tar.gz
 CMAKE_URL=http://www.cmake.org/files/$CMAKE_VERSION_DIR/$CMAKE_TAR
 CMAKE_DIR=$(pwd)/cmake-$CMAKE_VERSION
 
-wget --quiet $CMAKE_URL
+wget $CMAKE_URL
 mkdir -p $CMAKE_DIR
 tar --strip-components=1 -xzf $CMAKE_TAR -C $CMAKE_DIR
 export PATH=$CMAKE_DIR/bin:$PATH
