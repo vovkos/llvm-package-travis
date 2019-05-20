@@ -22,12 +22,12 @@ Releases
 			| LLVM 8.0.0
 			| 2019-Mar-20
 
-		-	+ `llvm-8.0.0-xenial <https://github.com/vovkos/llvm-package-travis/releases/llvm-8.0.0-xenial>`__
-			+ `llvm-8.0.0-trusty <https://github.com/vovkos/llvm-package-travis/releases/llvm-8.0.0-trusty>`__
+		-	+ `llvm-8.0.0-linux-xenial <https://github.com/vovkos/llvm-package-travis/releases/llvm-8.0.0-linux-xenial>`__
+			+ `llvm-8.0.0-linux-trusty <https://github.com/vovkos/llvm-package-travis/releases/llvm-8.0.0-linux-trusty>`__
 			+ `llvm-8.0.0-osx <https://github.com/vovkos/llvm-package-travis/releases/llvm-8.0.0-osx>`__
 
-		-	+ `clang-8.0.0-xenial <https://github.com/vovkos/llvm-package-travis/releases/clang-8.0.0-xenial>`__
-			+ `clang-8.0.0-trusty <https://github.com/vovkos/llvm-package-travis/releases/clang-8.0.0-trusty>`__
+		-	+ `clang-8.0.0-linux-xenial <https://github.com/vovkos/llvm-package-travis/releases/clang-8.0.0-linux-xenial>`__
+			+ `clang-8.0.0-linux-trusty <https://github.com/vovkos/llvm-package-travis/releases/clang-8.0.0-linux-trusty>`__
 			+ `clang-8.0.0-osx <https://github.com/vovkos/llvm-package-travis/releases/clang-8.0.0-osx>`__
 
 		- The latest and greatest LLVM
@@ -36,12 +36,12 @@ Releases
 			| LLVM 3.9.1
 			| 2016-Dec-23
 
-		-	+ `llvm-3.9.1-xenial <https://github.com/vovkos/llvm-package-travis/releases/llvm-3.9.1-xenial>`__
-			+ `llvm-3.9.1-trusty <https://github.com/vovkos/llvm-package-travis/releases/llvm-3.9.1-trusty>`__
+		-	+ `llvm-3.9.1-linux-xenial <https://github.com/vovkos/llvm-package-travis/releases/llvm-3.9.1-linux-xenial>`__
+			+ `llvm-3.9.1-linux-trusty <https://github.com/vovkos/llvm-package-travis/releases/llvm-3.9.1-linux-trusty>`__
 			+ `llvm-3.9.1-osx <https://github.com/vovkos/llvm-package-travis/releases/llvm-3.9.1-osx>`__
 
-		-	+ `clang-3.9.1-xenial <https://github.com/vovkos/llvm-package-travis/releases/clang-3.9.1-xenial>`__
-			+ `clang-3.9.1-trusty <https://github.com/vovkos/llvm-package-travis/releases/clang-3.9.1-trusty>`__
+		-	+ `clang-3.9.1-linux-xenial <https://github.com/vovkos/llvm-package-travis/releases/clang-3.9.1-linux-xenial>`__
+			+ `clang-3.9.1-linux-trusty <https://github.com/vovkos/llvm-package-travis/releases/clang-3.9.1-linux-trusty>`__
 			+ `clang-3.9.1-osx <https://github.com/vovkos/llvm-package-travis/releases/clang-3.9.1-osx>`__
 
 		- The latest LLVM which still can be compiled with MSVC 2013
@@ -50,12 +50,12 @@ Releases
 			| LLVM 3.4.2
 			| 2014-Jun-19
 
-		-	+ `llvm-3.4.2-xenial <https://github.com/vovkos/llvm-package-travis/releases/llvm-3.4.2-xenial>`__
-			+ `llvm-3.4.2-trusty <https://github.com/vovkos/llvm-package-travis/releases/llvm-3.4.2-trusty>`__
+		-	+ `llvm-3.4.2-linux-xenial <https://github.com/vovkos/llvm-package-travis/releases/llvm-3.4.2-linux-xenial>`__
+			+ `llvm-3.4.2-linux-trusty <https://github.com/vovkos/llvm-package-travis/releases/llvm-3.4.2-linux-trusty>`__
 			+ `llvm-3.4.2-osx <https://github.com/vovkos/llvm-package-travis/releases/llvm-3.4.2-osx>`__
 
-		-	+ `clang-3.4.2-xenial <https://github.com/vovkos/llvm-package-travis/releases/clang-3.4.2-xenial>`__
-			+ `clang-3.4.2-trusty <https://github.com/vovkos/llvm-package-travis/releases/clang-3.4.2-trusty>`__
+		-	+ `clang-3.4.2-linux-xenial <https://github.com/vovkos/llvm-package-travis/releases/clang-3.4.2-linux-xenial>`__
+			+ `clang-3.4.2-linux-trusty <https://github.com/vovkos/llvm-package-travis/releases/clang-3.4.2-linux-trusty>`__
 			+ `clang-3.4.2-osx <https://github.com/vovkos/llvm-package-travis/releases/clang-3.4.2-osx>`__
 
 		- The latest LLVM which still can be compiled with MSVC 2010
