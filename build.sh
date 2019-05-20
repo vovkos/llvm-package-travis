@@ -1,14 +1,23 @@
 #!/bin/bash
-set -e
+# set -e
 
 #. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
 case "$BUILD_PROJECT" in
 "llvm")
+	echo build - 1
 	mkdir llvm/build
+	echo build - 2: $?
+
 	pushd llvm/build
+	echo build - 3: $?
+	exit -1
+
 	cmake .. $LLVM_CMAKE_FLAGS
+
 	make -j $LLVM_CPU_COUNT
+	echo build - 5
+
 	make install
 	popd
 
