@@ -17,6 +17,7 @@ case "$BUILD_PROJECT" in
 
 	time travis_wait 60 tar -cvJf $LLVM_RELEASE_TAR $LLVM_RELEASE_NAME
 	ls -l
+	xz --version
 	;;
 
 "clang")
@@ -29,6 +30,7 @@ case "$BUILD_PROJECT" in
 
 	time travis_wait 60 tar -cvJf $CLANG_RELEASE_TAR $CLANG_RELEASE_NAME
 	ls -l
+	xz --version
 	;;
 esac
 
