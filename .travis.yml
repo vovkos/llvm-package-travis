@@ -27,7 +27,7 @@ env:
     global:
         - BUILD_PROJECT=clang
         - LLVM_VERSION=8.0.0
-        - TAR_COMPRESSION=xz
+        - XZ_OPT=-5
 
     matrix:
         - TARGET_CPU=amd64 BUILD_CONFIGURATION=Debug

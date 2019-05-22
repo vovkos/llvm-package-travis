@@ -15,7 +15,8 @@ case "$BUILD_PROJECT" in
 	make install
 	popd
 
-	travis_wait 60 tar --${TAR_COMPRESSION} -cvf $LLVM_RELEASE_TAR $LLVM_RELEASE_NAME
+	time travis_wait 60 tar -cvJf $LLVM_RELEASE_TAR $LLVM_RELEASE_NAME
+	ls -l
 	;;
 
 "clang")
@@ -26,7 +27,8 @@ case "$BUILD_PROJECT" in
 	make install
 	popd
 
-	travis_wait 60 tar --${TAR_COMPRESSION} -cvf $CLANG_RELEASE_TAR $CLANG_RELEASE_NAME
+	time travis_wait 60 tar -cvJf $CLANG_RELEASE_TAR $CLANG_RELEASE_NAME
+	ls -l
 	;;
 esac
 
