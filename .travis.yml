@@ -2,21 +2,21 @@ language: cpp
 
 # a) Ubuntu 14.04 Trusty Tahr
 
-os: linux
-dist: trusty
-sudo: required
-compiler:
-   - gcc
-#   - clang
+# os: linux
+# dist: trusty
+# sudo: required
+# compiler:
+#    - gcc
+#    - clang
 
 # b) Ubuntu 16.04 Xenial Xerus
 
-# os: linux
-# dist: xenial
-# sudo: required
-# compiler:
-#     - gcc
-#     - clang
+os: linux
+dist: xenial
+sudo: required
+compiler:
+    - gcc
+    - clang
 
 # c) Mac OS X
 
@@ -25,15 +25,15 @@ compiler:
 
 env:
     global:
-        - BUILD_PROJECT=clang
-        - LLVM_VERSION=8.0.0
-        - XZ_OPT=-4
+        - BUILD_PROJECT=llvm
+        - LLVM_VERSION=3.9.1
+#       - XZ_OPT=-4
 
     matrix:
         - TARGET_CPU=amd64 BUILD_CONFIGURATION=Debug
-#        - TARGET_CPU=amd64 BUILD_CONFIGURATION=Release
-#        - TARGET_CPU=x86 BUILD_CONFIGURATION=Debug
-#        - TARGET_CPU=x86 BUILD_CONFIGURATION=Release
+        - TARGET_CPU=amd64 BUILD_CONFIGURATION=Release
+        - TARGET_CPU=x86 BUILD_CONFIGURATION=Debug
+        - TARGET_CPU=x86 BUILD_CONFIGURATION=Release
 
 matrix:
     exclude:
