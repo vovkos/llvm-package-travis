@@ -27,8 +27,7 @@ env:
     global:
         - BUILD_PROJECT=clang
         - LLVM_VERSION=8.0.0
-        - XZ_DEFAULTS=-1
-        - XZ_OPT=-1
+        - XZ_OPT=-4
 
     matrix:
         - TARGET_CPU=amd64 BUILD_CONFIGURATION=Debug
