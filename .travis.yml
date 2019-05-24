@@ -2,21 +2,21 @@ language: cpp
 
 # a) Ubuntu 14.04 Trusty Tahr
 
-os: linux
-dist: trusty
-sudo: required
-compiler:
-   - gcc
-   - clang
+# os: linux
+# dist: trusty
+# sudo: required
+# compiler:
+#    - gcc
+#    - clang
 
 # b) Ubuntu 16.04 Xenial Xerus
 
-# os: linux
-# dist: xenial
-# sudo: required
-# compiler:
-#     - gcc
-#     - clang
+os: linux
+dist: xenial
+sudo: required
+compiler:
+    - gcc
+    - clang
 
 # c) Mac OS X
 
