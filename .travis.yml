@@ -2,12 +2,12 @@ language: cpp
 
 # a) Ubuntu 14.04 Trusty Tahr
 
-# os: linux
-# dist: trusty
-# sudo: required
-# compiler:
-#    - gcc
-#    - clang
+os: linux
+dist: trusty
+sudo: required
+compiler:
+   - gcc
+   - clang
 
 # b) Ubuntu 16.04 Xenial Xerus
 
@@ -20,13 +20,13 @@ language: cpp
 
 # c) Mac OS X
 
-os: osx
-compiler: clang
+# os: osx
+# compiler: clang
 
 env:
     global:
-        - BUILD_PROJECT=clang
-        - LLVM_VERSION=8.0.0
+        - BUILD_PROJECT=llvm
+        - LLVM_VERSION=7.1.0
 #       - XZ_OPT=-4
 
     matrix:

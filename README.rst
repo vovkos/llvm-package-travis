@@ -30,6 +30,18 @@ Releases
 
 		- The latest and greatest LLVM
 
+	*	-	2019-Apr-17
+
+		-	+ `llvm-7.1.0-linux-xenial <https://github.com/vovkos/llvm-package-travis/releases/llvm-7.1.0-linux-xenial>`__
+			+ `llvm-7.1.0-linux-trusty <https://github.com/vovkos/llvm-package-travis/releases/llvm-7.1.0-linux-trusty>`__
+			+ `llvm-7.1.0-osx <https://github.com/vovkos/llvm-package-travis/releases/llvm-7.1.0-osx>`__
+
+		-	+ `clang-7.1.0-linux-xenial <https://github.com/vovkos/llvm-package-travis/releases/clang-7.1.0-linux-xenial>`__
+			+ `clang-7.1.0-linux-trusty <https://github.com/vovkos/llvm-package-travis/releases/clang-7.1.0-linux-trusty>`__
+			+ `clang-7.1.0-osx <https://github.com/vovkos/llvm-package-travis/releases/clang-7.1.0-osx>`__
+
+		- The ABI compatibility with GCC fix for LLVM 7
+
 	*	-	2016-Dec-23
 
 		-	+ `llvm-3.9.1-linux-xenial <https://github.com/vovkos/llvm-package-travis/releases/llvm-3.9.1-linux-xenial>`__
@@ -66,7 +78,7 @@ LLVM is huge, and it's getting bigger with each and every release. Building it t
 
 So why not use pre-built packages from the official `LLVM download page <http://releases.llvm.org>`__? Unfortunately, the official binaries cover just a *tiny fraction* of possible configurations; what's even worse, there's no consistency in the build matrix from release to release. There are no Debug libraries or 32-bit binaries for Ubuntu, sometimes Ubuntu build is missing, sometimes there's no Mac OS X, etc.
 
-The ``llvm-package-travis`` project builds all major versions of both LLVM and LibClang on Travis CI (so there's a guarantee of binary compatibility) and for a consistent and much more complete build matrix:
+The ``llvm-package-travis`` project builds all important versions of both LLVM and LibClang on Travis CI (so there's a guarantee of binary compatibility) and for a consistent and much more complete build matrix:
 
 * OS:
 	- Linux Ubuntu 16.04 (Xenial Xerus)
