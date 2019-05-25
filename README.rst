@@ -62,9 +62,9 @@ Releases
 Abstract
 --------
 
-LLVM is huge, and it's getting bigger with each and every release. Building it together with a project which depends on it (e.g. an LLVM-targeting programming language) during a CI build is **not an option** -- building *LLVM itself* eats most (earlier LLVM releases) and all (recent LLVM releases) of the allotted CI build time.
+LLVM is huge, and it's getting bigger with each and every release. Building it together with a project which depends on it (e.g., an LLVM-targeting programming language) during a CI build is **not an option** -- building *LLVM itself* eats most (earlier LLVM releases), and all (recent LLVM releases) of the allotted CI build time.
 
-So why not using pre-built packages from the official `LLVM download page <http://releases.llvm.org>`__? Unfortunately, the official binaries cover just a *tiny fraction* of possible configurations; what's even worse, there's no consistency in the build matrix from release to release. There are no Debug libraries or 32-bit binaries for Ubuntu, sometimes Ubuntu build is missing, sometimes there's no Mac OS X, etc.
+So why not use pre-built packages from the official `LLVM download page <http://releases.llvm.org>`__? Unfortunately, the official binaries cover just a *tiny fraction* of possible configurations; what's even worse, there's no consistency in the build matrix from release to release. There are no Debug libraries or 32-bit binaries for Ubuntu, sometimes Ubuntu build is missing, sometimes there's no Mac OS X, etc.
 
 The ``llvm-package-travis`` project builds all major versions of both LLVM and LibClang on Travis CI (so there's a guarantee of binary compatibility) and for a consistent and much more complete build matrix:
 
