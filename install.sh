@@ -7,9 +7,13 @@ case "$BUILD_PROJECT" in
 "llvm")
 	# download and unpack LLVM sources
 
-	wget $LLVM_SRC_URL
-	mkdir -p llvm
-	tar --strip-components=1 -xf $LLVM_SRC_TAR -C llvm
+	if [[ $BUILD_MASTER == "true" ]]; then
+		git clone --depth=1 $LLVM_MASTER_URL llvm
+	else
+		wget $LLVM_SRC_URL
+		mkdir -p llvm
+		tar --strip-components=1 -xf $LLVM_SRC_TAR -C llvm
+	fi
 
 	# on Debug builds patch llvm-config/CMakeLists.txt to always build and install llvm-config
 
@@ -30,9 +34,13 @@ case "$BUILD_PROJECT" in
 "clang")
 	# download and unpack Clang sources
 
-	wget $CLANG_SRC_URL
-	mkdir -p clang
-	tar --strip-components=1 -xf $CLANG_SRC_TAR -C clang
+	if [[ $BUILD_MASTER == "true" ]]; then
+		git clone --depth=1 $CLANG_MASTER_URL clang
+	else
+		wget $CLANG_SRC_URL
+		mkdir -p clang
+		tar --strip-components=1 -xf $CLANG_SRC_TAR -C clang
+	fi
 
 	# download and unpack LLVM release package from llvm-package-travis
 

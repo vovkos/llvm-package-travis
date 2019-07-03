@@ -1,3 +1,14 @@
+#. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
+LLVM_CMAKELISTS_URL=https://raw.githubusercontent.com/llvm-mirror/llvm/master/CMakeLists.txt
+
+if [[ $BUILD_MASTER == "true" ]]; then
+	wget $LLVM_CMAKELISTS_URL
+	LLVM_VERSION=$(perl print-llvm-version.pl CMakeLists.txt)
+fi
+
+#. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
 if [[ $LLVM_VERSION < "3.5.0" ]]; then
 	TAR_SUFFIX=.tar.gz
 else
@@ -37,6 +48,7 @@ THIS_DIR=`pwd`
 
 #. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
+LLVM_MASTER_URL=https://github.com/llvm-mirror/llvm
 LLVM_RELEASE_NAME=llvm-$LLVM_VERSION-$TRAVIS_OS_NAME$DIST_SUFFIX$CPU_SUFFIX$CC_SUFFIX$DEBUG_SUFFIX
 LLVM_RELEASE_DIR=$THIS_DIR/$LLVM_RELEASE_NAME
 LLVM_RELEASE_TAR=$LLVM_RELEASE_NAME.tar.xz
@@ -63,6 +75,7 @@ LLVM_CMAKE_FLAGS=(
 
 #. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
+CLANG_MASTER_URL=https://github.com/llvm-mirror/clang
 CLANG_RELEASE_NAME=clang-$LLVM_VERSION-$TRAVIS_OS_NAME$DIST_SUFFIX$CPU_SUFFIX$CC_SUFFIX$DEBUG_SUFFIX
 CLANG_RELEASE_DIR=$THIS_DIR/$CLANG_RELEASE_NAME
 CLANG_RELEASE_TAR=$CLANG_RELEASE_NAME.tar.xz
@@ -137,12 +150,15 @@ case "$BUILD_PROJECT" in
 esac
 
 echo ---------------------------------------------------------------------------
+echo LLVM_VERSION:     $LLVM_VERSION
+echo LLVM_MASTER_URL:  $LLVM_MASTER_URL
 echo LLVM_SRC_URL:     $LLVM_SRC_URL
 echo LLVM_RELEASE_TAR: $LLVM_RELEASE_TAR
 echo LLVM_RELEASE_URL: $LLVM_RELEASE_URL
 echo LLVM_CMAKE_FLAGS: $LLVM_CMAKE_FLAGS
 echo ---------------------------------------------------------------------------
 echo CLANG_SRC_URL:     $CLANG_SRC_URL
+echo CLANG_MASTER_URL:  $CLANG_MASTER_URL
 echo CLANG_RELEASE_TAR: $CLANG_RELEASE_TAR
 echo CLANG_CMAKE_FLAGS: $CLANG_CMAKE_FLAGS
 echo ---------------------------------------------------------------------------
