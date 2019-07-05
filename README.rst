@@ -40,7 +40,7 @@ Releases
 			+ `clang-8.0.0-linux-trusty <https://github.com/vovkos/llvm-package-travis/releases/clang-8.0.0-linux-trusty>`__
 			+ `clang-8.0.0-osx <https://github.com/vovkos/llvm-package-travis/releases/clang-8.0.0-osx>`__
 
-		- The latest and greatest LLVM
+		- The latest official LLVM release
 
 	*	-	2019-Apr-17
 
