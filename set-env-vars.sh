@@ -1,5 +1,19 @@
 #. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
 
+if [ $TRAVIS_OS_NAME == "osx" ]; then
+	CPU_COUNT=$(sysctl -n hw.ncpu)
+	CPU_SUFFIX=
+	DIST_SUFFIX=
+	CC_SUFFIX=
+else
+	CPU_COUNT=$(nproc)
+	CPU_SUFFIX=-$TARGET_CPU
+	DIST_SUFFIX=-$TRAVIS_DIST
+	CC_SUFFIX=-$CC
+fi
+
+#. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
+
 LLVM_CMAKELISTS_URL=https://raw.githubusercontent.com/llvm-mirror/llvm/master/CMakeLists.txt
 
 if [[ $BUILD_MASTER == "true" ]]; then
@@ -22,18 +36,6 @@ LLVM_SRC_TAR=llvm-$LLVM_VERSION.src$TAR_SUFFIX
 LLVM_SRC_URL=http://releases.llvm.org/$LLVM_VERSION/$LLVM_SRC_TAR
 CLANG_SRC_TAR=cfe-$LLVM_VERSION.src$TAR_SUFFIX
 CLANG_SRC_URL=http://releases.llvm.org/$LLVM_VERSION/$CLANG_SRC_TAR
-
-if [ $TRAVIS_OS_NAME == "osx" ]; then
-	CPU_COUNT=$(sysctl -n hw.ncpu)
-	CPU_SUFFIX=
-	DIST_SUFFIX=
-	CC_SUFFIX=
-else
-	CPU_COUNT=$(nproc)
-	CPU_SUFFIX=-$TARGET_CPU
-	DIST_SUFFIX=-$TRAVIS_DIST
-	CC_SUFFIX=-$CC
-fi
 
 if [ $TARGET_CPU == "x86" ]; then
 	LLVM_BUILD_32_BITS=ON
