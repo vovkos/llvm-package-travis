@@ -5,6 +5,9 @@ LLVM_CMAKELISTS_URL=https://raw.githubusercontent.com/llvm-mirror/llvm/master/CM
 if [[ $BUILD_MASTER == "true" ]]; then
 	wget $LLVM_CMAKELISTS_URL
 	LLVM_VERSION=$(perl print-llvm-version.pl CMakeLists.txt)
+	LLVM_RELEASE_TAG=llvm-master-$TRAVIS_OS_NAME$DIST_SUFFIX
+else
+	LLVM_RELEASE_TAG=llvm-$LLVM_VERSION-$TRAVIS_OS_NAME$DIST_SUFFIX
 fi
 
 #. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
@@ -55,7 +58,7 @@ LLVM_MASTER_URL=https://github.com/llvm-mirror/llvm
 LLVM_RELEASE_NAME=llvm-$LLVM_VERSION-$TRAVIS_OS_NAME$DIST_SUFFIX$CPU_SUFFIX$CC_SUFFIX$DEBUG_SUFFIX
 LLVM_RELEASE_DIR=$THIS_DIR/$LLVM_RELEASE_NAME
 LLVM_RELEASE_TAR=$LLVM_RELEASE_NAME.tar.xz
-LLVM_RELEASE_URL=https://github.com/vovkos/llvm-package-travis/releases/download/llvm-$LLVM_VERSION-$TRAVIS_OS_NAME$DIST_SUFFIX/$LLVM_RELEASE_TAR
+LLVM_RELEASE_URL=https://github.com/vovkos/llvm-package-travis/releases/download/$LLVM_RELEASE_TAG/$LLVM_RELEASE_TAR
 LLVM_CPU_COUNT=$CPU_COUNT
 
 LLVM_CMAKE_FLAGS=(
