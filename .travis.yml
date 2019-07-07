@@ -11,17 +11,17 @@ language: cpp
 
 # b) Ubuntu 16.04 Xenial Xerus
 
-os: linux
-dist: xenial
-sudo: required
-compiler:
-    - gcc
-    - clang
+# os: linux
+# dist: xenial
+# sudo: required
+# compiler:
+#     - gcc
+#     - clang
 
 # c) Mac OS X
 
-# os: osx
-# compiler: clang
+os: osx
+compiler: clang
 
 env:
     global:
