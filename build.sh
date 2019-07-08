@@ -28,7 +28,7 @@ case "$BUILD_PROJECT" in
 	make install
 	popd
 
-	time travis_wait 60 tar -cvJf $CLANG_RELEASE_TAR $CLANG_RELEASE_NAME
+	time travis_wait 90 tar -cvJf $CLANG_RELEASE_TAR $CLANG_RELEASE_NAME
 	ls -l
 	xz --version
 	;;
