@@ -25,9 +25,9 @@ compiler:
 
 env:
     global:
-        - BUILD_PROJECT=clang
+        - BUILD_PROJECT=llvm
         - BUILD_MASTER=true
-        - LLVM_VERSION=x.x.x
+        - LLVM_VERSION=9.0.1
 #       - XZ_OPT=-4
 
     matrix:
