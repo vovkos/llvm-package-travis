@@ -32,10 +32,16 @@ else
 	TAR_SUFFIX=.tar.xz
 fi
 
+if [[ $LLVM_VERSION < "9.0.1" ]]; then
+	BASE_SRC_URL=http://releases.llvm.org/$LLVM_VERSION
+else
+	BASE_SRC_URL=https://github.com/llvm/llvm-project/releases/download/llvmorg-$LLVM_VERSION
+fi
+
 LLVM_SRC_TAR=llvm-$LLVM_VERSION.src$TAR_SUFFIX
-LLVM_SRC_URL=http://releases.llvm.org/$LLVM_VERSION/$LLVM_SRC_TAR
+LLVM_SRC_URL=$BASE_SRC_URL/$LLVM_SRC_TAR
 CLANG_SRC_TAR=cfe-$LLVM_VERSION.src$TAR_SUFFIX
-CLANG_SRC_URL=http://releases.llvm.org/$LLVM_VERSION/$CLANG_SRC_TAR
+CLANG_SRC_URL=$BASE_SRC_URL/$CLANG_SRC_TAR
 
 if [ $TARGET_CPU == "x86" ]; then
 	LLVM_BUILD_32_BITS=ON
